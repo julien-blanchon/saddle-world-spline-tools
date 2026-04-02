@@ -1,0 +1,20 @@
+[workspace]
+members = [
+    "support",
+    "basic",
+    "extrusion_road",
+    "runtime_editing",
+    "placement_along_path",
+    "closed_loop_tube",
+    "lab",
+]
+resolver = "3"
+
+[workspace.dependencies]
+bevy = "0.18"
+saddle-world-spline-tools = { path = ".." }
+
+[workspace.lints.clippy]
+too_many_arguments = "allow"
+type_complexity = "allow"
+nonstandard_macro_braces = "warn"

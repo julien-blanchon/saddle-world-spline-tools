@@ -1,0 +1,18 @@
+[package]
+name = "saddle-world-spline-tools"
+version = "0.1.0"
+edition = "2024"
+publish = false
+description = "Spline and path authoring toolkit for Bevy"
+repository = "https://github.com/julien-blanchon/saddle-world-spline-tools"
+license = "MIT-0"
+
+[dependencies]
+bevy = "0.18"
+
+[workspace]
+
+[lints.clippy]
+too_many_arguments = "allow"
+type_complexity = "allow"
+nonstandard_macro_braces = "warn"
