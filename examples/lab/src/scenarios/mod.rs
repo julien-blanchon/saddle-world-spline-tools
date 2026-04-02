@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use bevy_e2e::{
+use saddle_bevy_e2e::{
     action::Action,
     actions::{assertions, inspect},
     scenario::Scenario,
