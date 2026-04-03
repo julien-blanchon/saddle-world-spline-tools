@@ -7,6 +7,7 @@ pub mod frame;
 pub mod gizmos;
 pub mod mesh;
 pub mod sampling;
+pub mod terrain;
 mod systems;
 
 pub use components::{
@@ -19,11 +20,13 @@ pub use curve::{
 };
 pub use extrusion::{
     CrossSection, CustomExtrusion, ExtrusionBuffers, RibbonExtrusion, SplineCapMode,
-    SplineExtrusion, SplineExtrusionShape, SplineUvMode, TubeExtrusion, build_extrusion_buffers,
+    SplineExtrusion, SplineExtrusionShape, SplineUvMode, TubeExtrusion,
+    build_extrusion_buffers, build_extrusion_buffers_from_samples,
 };
 pub use frame::{FrameMode, SplineFrame};
 pub use mesh::extrusion_buffers_to_mesh;
 pub use sampling::{SplineBakeSettings, SplineCache, SplineNearestPoint, SplineSample};
+pub use terrain::{TerrainProjectionSettings, project_samples_onto_surface};
 
 use bevy::{
     app::PostStartup,
@@ -108,6 +111,7 @@ impl Plugin for SplineToolsPlugin {
             .register_type::<SplineRebuilt>()
             .register_type::<SplineSample>()
             .register_type::<SplineNearestPoint>()
+            .register_type::<TerrainProjectionSettings>()
             .register_type::<SplineUvMode>()
             .register_type::<TubeExtrusion>()
             .add_systems(self.activate_schedule, systems::activate_runtime)

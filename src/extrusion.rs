@@ -157,7 +157,14 @@ pub fn build_extrusion_buffers(
     cache: &SplineCache,
     extrusion: &SplineExtrusion,
 ) -> ExtrusionBuffers {
-    if cache.samples().len() < 2 {
+    build_extrusion_buffers_from_samples(cache.samples(), extrusion)
+}
+
+pub fn build_extrusion_buffers_from_samples(
+    samples: &[SplineSample],
+    extrusion: &SplineExtrusion,
+) -> ExtrusionBuffers {
+    if samples.len() < 2 {
         return ExtrusionBuffers::default();
     }
 
@@ -166,7 +173,7 @@ pub fn build_extrusion_buffers(
         return ExtrusionBuffers::default();
     }
 
-    build_sweep_buffers(cache.samples(), extrusion, &cross_section, close_profile)
+    build_sweep_buffers(samples, extrusion, &cross_section, close_profile)
 }
 
 fn cross_section_for_shape(shape: &SplineExtrusionShape) -> (CrossSection, bool) {
