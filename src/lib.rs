@@ -7,8 +7,8 @@ pub mod frame;
 pub mod gizmos;
 pub mod mesh;
 pub mod sampling;
-pub mod terrain;
 mod systems;
+pub mod terrain;
 
 pub use components::{
     SplineDebugDraw, SplineDiagnostics, SplineEditCommand, SplineEditRequest, SplineMeshRebuilt,
@@ -20,8 +20,8 @@ pub use curve::{
 };
 pub use extrusion::{
     CrossSection, CustomExtrusion, ExtrusionBuffers, RibbonExtrusion, SplineCapMode,
-    SplineExtrusion, SplineExtrusionShape, SplineUvMode, TubeExtrusion,
-    build_extrusion_buffers, build_extrusion_buffers_from_samples,
+    SplineExtrusion, SplineExtrusionShape, SplineUvMode, TubeExtrusion, build_extrusion_buffers,
+    build_extrusion_buffers_from_samples,
 };
 pub use frame::{FrameMode, SplineFrame};
 pub use mesh::extrusion_buffers_to_mesh;

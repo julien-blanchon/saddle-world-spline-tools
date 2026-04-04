@@ -44,19 +44,20 @@ where
                 .unwrap_or(sample.normal)
                 .normalize_or_zero();
             let projected_surface_normal = projected_perpendicular(surface_normal, tangent)
-                .unwrap_or_else(|| projected_perpendicular(sample.normal, tangent).unwrap_or(Vec3::Y));
+                .unwrap_or_else(|| {
+                    projected_perpendicular(sample.normal, tangent).unwrap_or(Vec3::Y)
+                });
             let blended_normal = sample
                 .normal
                 .normalize_or_zero()
-                .lerp(projected_surface_normal, settings.normal_alignment.clamp(0.0, 1.0))
+                .lerp(
+                    projected_surface_normal,
+                    settings.normal_alignment.clamp(0.0, 1.0),
+                )
                 .normalize_or_zero();
             let binormal = tangent.cross(blended_normal).normalize_or_zero();
             let corrected_normal = binormal.cross(tangent).normalize_or_zero();
-            let rotation = Quat::from_mat3(&Mat3::from_cols(
-                corrected_normal,
-                binormal,
-                tangent,
-            ));
+            let rotation = Quat::from_mat3(&Mat3::from_cols(corrected_normal, binormal, tangent));
 
             SplineSample {
                 position: Vec3::new(
