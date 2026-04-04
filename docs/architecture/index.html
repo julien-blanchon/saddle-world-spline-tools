@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			(() => {
+				document.documentElement.classList.add('js');
+				const storageKey = 'docs-theme';
+				const storedTheme = localStorage.getItem(storageKey);
+				const isDark =
+					storedTheme === 'dark' ||
+					(storedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+				document.documentElement.classList.toggle('dark', isDark);
+				document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+			})();
+		</script>
+		<link href="../../_app/immutable/entry/start.G3IqrOVh.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CUshGYPk.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D6rU7RKI.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.BTePS7kX.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D2PL5qU_.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DsnmJJEf.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CGbRUU1n.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.BKK0ayrH.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/t-t7SKKB.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D4B6LG2N.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D3udy8KQ.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/2.D87kPH-m.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BunmqgQL.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.BOp3_yHr.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/O7QY0ZL7.js" rel="modulepreload">
+		<!--12qhfyh--><meta name="theme-color" content="#ffffff"/> <link rel="icon" type="image/svg+xml" href="../../favicon.svg"/> <meta name="description" content="Spline and path authoring toolkit for Bevy"/><!----><!--1bpnej--><!--[0--><meta name="description" content="Architecture documentation"/><!--]--><!----><title>Architecture - saddle-world-spline-tools</title>
+		<link href="../../_app/immutable/assets/manifest.DAGDUwuc.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/0.Cu___w4E.css" rel="stylesheet">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[0--><!--[--><!--[0--><!--[--><main class="relative h-dvh bg-background text-foreground"><div class="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-border bg-background px-4 py-1.5 lg:hidden"><a href="../../" class="inline-flex items-center gap-1 px-2 py-2 text-sm tracking-tight text-foreground"><span class="font-medium tracking-tight text-foreground">saddle-world-spline-tools</span></a> <button class="-mr-2 inline-flex size-10 items-center justify-center gap-2 rounded-sm text-sm whitespace-nowrap text-foreground transition-colors duration-150 ease-out hover:bg-background-muted lg:hidden" aria-label="Toggle menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" aria-hidden="true"><!--[-1--><!--]--><path d="M4 6H28V8H4z"></path><path d="M4 24H28V26H4z"></path><path d="M4 12H28V14H4z"></path><path d="M4 18H28V20H4z"></path></svg><!----></button></div> <!--[-1--><!--]--><!----> <div class="flex h-full w-full min-w-0 lg:grid lg:grid-cols-[22rem_minmax(0,1fr)] lg:pr-4 xl:grid-cols-[22rem_minmax(0,56rem)_18rem] xl:justify-center"><div class="hidden lg:block"><aside class="flex h-dvh flex-col bg-background" aria-label="Documentation sidebar"><div class="flex flex-col gap-4 p-4"><a href="../../" class="flex items-center gap-2"><span class="text-xl font-medium tracking-tight text-foreground">saddle-world-spline-tools</span></a> <!--[0--><button type="button" class="group inset-shadow relative flex h-9 w-full items-center gap-2 rounded-sm bg-background-inset px-3 py-1.5 text-sm font-medium text-foreground-muted/70 transition-[color] duration-150 ease-out hover:text-foreground-muted"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="text-foreground-muted/70"><!--[-1--><!--]--><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"></path></svg><!----> <span class="flex-1 text-left">Search...</span> <!--[0--><kbd class="card pointer-events-none relative hidden h-5 items-center gap-1 rounded-xs bg-background px-1.5 font-mono text-[10px] font-medium text-foreground-muted/70 select-none sm:flex">⌘ K</kbd><!--]--></button><!--]--><!----></div> <div class="relative flex flex-col overflow-hidden flex-1 svelte-1lcbi17"><div class="scrollbar-hide min-h-0 w-full flex-1 overflow-x-hidden overflow-y-auto p-4 svelte-1lcbi17" style="mask-image: linear-gradient(to bottom, transparent, black 16px, black calc(100% - 16px), transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 16px, black calc(100% - 16px), transparent);"><nav class="flex flex-col space-y-1" aria-label="Documentation pages"><h4 class="mb-2 ml-2 text-xs font-medium tracking-wide text-foreground-muted/70 uppercase">Docs</h4> <!--[--><!--[-1--><a href="../../" class="block rounded-sm px-3 py-1.5 text-sm tracking-normal transition-all duration-150 ease-out text-foreground-muted hover:bg-background-muted hover:text-foreground">Overview</a><!--]--><!--[0--><button class="flex w-full items-center justify-between rounded-sm px-3 py-1.5 text-sm font-medium tracking-normal transition-all duration-150 ease-out hover:bg-background-muted hover:text-foreground text-foreground-muted"><span>Documentation</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="size-4 transition-transform duration-150"><!--[-1--><!--]--><path d="M22 16 12 26 10.6 24.6 19.2 16 10.6 7.4 12 6z"></path></svg><!----></button> <!--[-1--><!--]--><!--]--><!--[0--><button class="flex w-full items-center justify-between rounded-sm px-3 py-1.5 text-sm font-medium tracking-normal transition-all duration-150 ease-out hover:bg-background-muted hover:text-foreground text-foreground-muted"><span>Demos</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="size-4 transition-transform duration-150"><!--[-1--><!--]--><path d="M22 16 12 26 10.6 24.6 19.2 16 10.6 7.4 12 6z"></path></svg><!----></button> <!--[-1--><!--]--><!--]--><!--]--></nav><!----></div></div><!----> <div class="flex items-center gap-1 p-4"><!--[0--><button type="button" class="group transition-scale inset-shadow relative inline-flex size-7 items-center justify-center rounded-sm bg-background-inset text-foreground duration-150 ease-out active:scale-[0.95]" aria-label="Switch to dark mode"><span class="sr-only">Switch to dark mode</span> <span class="transition-transform duration-150 ease-out"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true"><!--[-1--><!--]--><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z" transform="translate(0 .005)"></path><path d="M6.854 5.375H8.854V10.333H6.854z" transform="rotate(-45 7.86 7.856)"></path><path d="M2 15.005H7V17.005000000000003H2z"></path><path d="M5.375 23.147H10.333V25.147H5.375z" transform="rotate(-45 7.86 24.149)"></path><path d="M15 25.005H17V30.005H15z"></path><path d="M23.147 21.668H25.147V26.625999999999998H23.147z" transform="rotate(-45 24.152 24.149)"></path><path d="M25 15.005H30V17.005000000000003H25z"></path><path d="M21.668 6.854H26.625999999999998V8.854H21.668z" transform="rotate(-45 24.152 7.856)"></path><path d="M15 2.005H17V7.005H15z"></path></svg><!----></span> <span class="absolute transition-transform duration-150 ease-out scale-0 blur-[2px]"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true"><!--[-1--><!--]--><path d="M13.5025,5.4136A15.0755,15.0755,0,0,0,25.096,23.6082a11.1134,11.1134,0,0,1-7.9749,3.3893c-.1385,0-.2782.0051-.4178,0A11.0944,11.0944,0,0,1,13.5025,5.4136M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"></path></svg><!----></span></button><!--]--> <!--[0--><a class="group transition-scale inset-shadow relative inline-flex size-7 cursor-pointer items-center justify-center rounded-sm bg-background-inset text-foreground duration-150 ease-out active:scale-[0.95]" href="https://github.com/julien-blanchon/saddle-world-spline-tools" target="_blank" rel="noreferrer" aria-label="Open project repository (opens in a new tab)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="size-4 flex-none"><!--[-1--><!--]--><path fill-rule="evenodd" d="M16,2a14,14,0,0,0-4.43,27.28c.7.13,1-.3,1-.67s0-1.21,0-2.38c-3.89.84-4.71-1.88-4.71-1.88A3.71,3.71,0,0,0,6.24,22.3c-1.27-.86.1-.85.1-.85A2.94,2.94,0,0,1,8.48,22.9a3,3,0,0,0,4.08,1.16,2.93,2.93,0,0,1,.88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4,5.4,0,0,1,1.44-3.76,5,5,0,0,1,.14-3.7s1.17-.38,3.85,1.43a13.3,13.3,0,0,1,7,0c2.67-1.81,3.84-1.43,3.84-1.43a5,5,0,0,1,.14,3.7,5.4,5.4,0,0,1,1.44,3.76c0,5.38-3.27,6.56-6.39,6.91a3.33,3.33,0,0,1,.95,2.59c0,1.87,0,3.38,0,3.84s.25.81,1,.67A14,14,0,0,0,16,2Z"></path></svg><!----></a><!--]--></div></aside><!----></div> <div class="inset-shadow relative mx-auto h-full w-full max-w-4xl min-w-0 overflow-hidden border border-border bg-background-inset pt-12 lg:my-4 lg:max-h-[calc(100dvh-2rem)] lg:overflow-visible lg:rounded-xl lg:pt-0"><div class="relative flex flex-col overflow-hidden mx-auto h-full w-full lg:max-h-[calc(100dvh-2rem)] svelte-1lcbi17"><div id="docs-content-container" class="scrollbar-hide min-h-0 w-full flex-1 overflow-x-hidden overflow-y-auto rounded-lg overscroll-none flex flex-col gap-8 px-4 py-8 lg:px-8 svelte-1lcbi17" style="mask-image: linear-gradient(to bottom, transparent, black 16px, black calc(100% - 16px), transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 16px, black calc(100% - 16px), transparent);"><section class="min-w-0 flex-1 space-y-8"><div class="space-y-4"><!--[-1--><!--]--> <h1 class="scroll-m-20 text-3xl font-medium tracking-tight text-foreground">Architecture</h1> <!--[0--><p class="max-w-4xl text-base font-normal tracking-normal text-foreground-muted">Architecture documentation</p><!--]--> <!--[0--><!--[0--><div class="relative z-20 mt-8 flex w-full gap-2 lg:hidden"><!--[0--><div class="inset-shadow w-full rounded-md bg-background-inset p-1.5"><button type="button" aria-live="polite" aria-disabled="false" class="card relative inline-flex h-9 w-full font-medium shrink-0 overflow-hidden items-center justify-center gap-2 rounded-sm bg-background px-4 py-2 text-sm whitespace-nowrap text-foreground transition-[background-color] duration-150 ease-out hover:bg-background-muted disabled:pointer-events-none disabled:opacity-50 has-[>svg]:px-3 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*=size-])]:size-4 flex-1"><span class="grid place-items-center" style="grid-template-areas: 'content';"><!----><span class="flex items-center gap-2 font-medium tracking-normal text-foreground will-change-transform" style="grid-area: content;"><!--[-1--><svg role="img" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-4 flex-none"><title>Markdown</title><path class="stroke-current" d="M1.212 5.5h21.576c.407 0 .712.317.712.679v11.549a.695.695 0 0 1-.712.677H1.212a.695.695 0 0 1-.712-.678V6.18c0-.362.305-.679.712-.679Z"></path><path class="fill-current" d="M3.03 15.96V7.946h2.425l2.424 2.946 2.424-2.946h2.424v8.014h-2.424v-4.596L7.88 14.31l-2.424-2.946v4.596H3.03Zm15.152 0-3.636-3.89h2.424V7.947h2.424v4.125h2.424l-3.636 3.889Z"></path></svg><!--]--> <span>Copy Markdown</span></span><!----></span></button></div><!--]--> <!--[0--><div class="inset-shadow relative rounded-md bg-background-inset p-1.5"><button id="mobile-doc-actions-menu-trigger" type="button" class="card relative inline-flex h-9 w-full font-medium shrink-0 overflow-hidden items-center justify-center gap-2 rounded-sm bg-background px-4 py-2 text-sm whitespace-nowrap text-foreground transition-[background-color] duration-150 ease-out hover:bg-background-muted disabled:pointer-events-none disabled:opacity-50 has-[>svg]:px-3 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*=size-])]:size-4 flex-1 w-auto! px-2.5!" aria-label="More actions" aria-haspopup="menu" aria-controls="mobile-doc-actions-menu" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="size-4"><!--[-1--><!--]--><circle cx="8" cy="16" r="2"></circle><circle cx="16" cy="16" r="2"></circle><circle cx="24" cy="16" r="2"></circle></svg><!----></button> <!--[-1--><!--]--></div><!--]--></div><!--]--><!--]--></div> <hr class="text-border"/> <div><!--[--><article data-doc-content="" class="w-full max-w-4xl"><!----><p><code>saddle-world-spline-tools</code> is split into four layers:</p>
+<ol>
+<li>pure curve authoring and evaluation</li>
+<li>frame generation and baked sampling</li>
+<li>sweep mesh generation</li>
+<li>ECS orchestration for runtime editing, cache invalidation, mesh sync, and gizmos</li>
+</ol>
+<p>That split keeps the crate useful outside ECS-heavy projects. Consumers can stay entirely in pure Rust when they only need path math, placement queries, or mesh generation for tools and offline preparation.</p>
+<h2>Data Flow</h2>
+<div class="code-block" data-code="SplineCurve + SplineBakeSettings
+        |
+        v
+Curve evaluation
+  - Bezier anchor chains
+  - Catmull-Rom with selectable parameterization
+  - per-anchor roll / width / radius / scale interpolation
+        |
+        v
+Baked sampling
+  - per-segment sample tables
+  - cumulative arc-length distances
+  - frame generation from the sampled tangents
+        |
+        v
+Pure queries
+  - sample_normalized
+  - sample_distance
+  - nearest_point
+  - evenly_spaced_transforms
+        |
+        v
+Mesh generation
+  - ribbon / tube / custom cross-section sweep
+  - UV generation
+  - optional flat end caps
+  - normals / tangents
+        |
+        v
+ECS runtime
+  - apply edit requests
+  - mark dirty segments
+  - rebuild only dirty spline caches
+  - rebuild only the affected spline meshes
+  - draw optional debug gizmos" data-language="text">
+					<div class="shiki-theme-light"><pre class="shiki github-light" style="background-color:#fff;color:#24292e" tabindex="0"><code><span class="line"><span>SplineCurve + SplineBakeSettings</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Curve evaluation</span></span>
+<span class="line"><span>  - Bezier anchor chains</span></span>
+<span class="line"><span>  - Catmull-Rom with selectable parameterization</span></span>
+<span class="line"><span>  - per-anchor roll / width / radius / scale interpolation</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Baked sampling</span></span>
+<span class="line"><span>  - per-segment sample tables</span></span>
+<span class="line"><span>  - cumulative arc-length distances</span></span>
+<span class="line"><span>  - frame generation from the sampled tangents</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Pure queries</span></span>
+<span class="line"><span>  - sample_normalized</span></span>
+<span class="line"><span>  - sample_distance</span></span>
+<span class="line"><span>  - nearest_point</span></span>
+<span class="line"><span>  - evenly_spaced_transforms</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Mesh generation</span></span>
+<span class="line"><span>  - ribbon / tube / custom cross-section sweep</span></span>
+<span class="line"><span>  - UV generation</span></span>
+<span class="line"><span>  - optional flat end caps</span></span>
+<span class="line"><span>  - normals / tangents</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>ECS runtime</span></span>
+<span class="line"><span>  - apply edit requests</span></span>
+<span class="line"><span>  - mark dirty segments</span></span>
+<span class="line"><span>  - rebuild only dirty spline caches</span></span>
+<span class="line"><span>  - rebuild only the affected spline meshes</span></span>
+<span class="line"><span>  - draw optional debug gizmos</span></span></code></pre></div>
+					<div class="shiki-theme-dark"><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span>SplineCurve + SplineBakeSettings</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Curve evaluation</span></span>
+<span class="line"><span>  - Bezier anchor chains</span></span>
+<span class="line"><span>  - Catmull-Rom with selectable parameterization</span></span>
+<span class="line"><span>  - per-anchor roll / width / radius / scale interpolation</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Baked sampling</span></span>
+<span class="line"><span>  - per-segment sample tables</span></span>
+<span class="line"><span>  - cumulative arc-length distances</span></span>
+<span class="line"><span>  - frame generation from the sampled tangents</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Pure queries</span></span>
+<span class="line"><span>  - sample_normalized</span></span>
+<span class="line"><span>  - sample_distance</span></span>
+<span class="line"><span>  - nearest_point</span></span>
+<span class="line"><span>  - evenly_spaced_transforms</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Mesh generation</span></span>
+<span class="line"><span>  - ribbon / tube / custom cross-section sweep</span></span>
+<span class="line"><span>  - UV generation</span></span>
+<span class="line"><span>  - optional flat end caps</span></span>
+<span class="line"><span>  - normals / tangents</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>ECS runtime</span></span>
+<span class="line"><span>  - apply edit requests</span></span>
+<span class="line"><span>  - mark dirty segments</span></span>
+<span class="line"><span>  - rebuild only dirty spline caches</span></span>
+<span class="line"><span>  - rebuild only the affected spline meshes</span></span>
+<span class="line"><span>  - draw optional debug gizmos</span></span></code></pre></div>
+				</div><h2>Curve Model</h2>
+<p><code>SplineCurve</code> stores one list of <code>SplineControlPoint</code>s shared by both curve families.</p>
+<ul>
+<li>Bezier uses the control-point anchor positions plus optional <code>in_handle</code> and <code>out_handle</code>.</li>
+<li>Catmull-Rom ignores the handles and uses the anchor positions only.</li>
+<li>Both families interpolate roll, width, radius, and scale metadata linearly between adjacent anchors.</li>
+</ul>
+<p>The crate intentionally treats control points as local-space authoring data. In the ECS runtime that means moving the spline entity via <code>Transform</code> moves the whole path and every generated mesh or placement query with it.</p>
+<h2>Cache Strategy</h2>
+<p><code>SplineCache</code> stores two levels of baked data:</p>
+<ul>
+<li>per-segment <code>CurveEvaluation</code> sample tables</li>
+<li>one flattened <code>SplineSample</code> array with cumulative distance and full orientation frames</li>
+</ul>
+<p>The runtime uses segment tables so message-driven point edits can invalidate only the local segments that depend on the edited anchor. After the local segment tables refresh, the flattened table is rebuilt from the current segment data and the frame pass runs again.</p>
+<p>This design gives the crate a practical incremental story without making the public API depend on an editor-only diff format.</p>
+<h3>Dirty Ranges</h3>
+<p>Dirty segment rules:</p>
+<ul>
+<li>Bezier point edits affect the previous and next segment around that anchor</li>
+<li>Catmull-Rom point edits affect up to four neighboring segments because each segment depends on four anchors</li>
+</ul>
+<p>Direct mutation of the whole <code>SplinePath</code> component is supported, but that path conservatively marks every segment dirty because a safe local diff cannot be inferred from an arbitrary external write.</p>
+<h2>Frame Generation</h2>
+<p>Framing is explicit and configurable through <code>FrameMode</code>.</p>
+<ul>
+<li><code>FixedUp</code> projects a caller-chosen up vector onto each tangent frame</li>
+<li><code>Frenet</code> derives normals from neighboring tangent deltas and is useful for debugging curvature-driven behavior</li>
+<li><code>ParallelTransport</code> propagates an initial frame by rotating the previous frame between successive tangents</li>
+<li><code>RotationMinimizing</code> uses a double-reflection transport pass and then applies twist correction on closed loops</li>
+</ul>
+<p>The default is <code>RotationMinimizing { up_hint: Vec3::Y }</code> because roads, tubes, cables, and repeated placement usually need stable low-twist frames more than curvature-pure Frenet normals.</p>
+<h2>Closed Loops</h2>
+<p>Closed loops are handled in three places:</p>
+<ol>
+<li>segment indexing wraps around the control-point list</li>
+<li>the flattened cache includes an end sample that lands back on the first point, which creates a stable mesh seam and easy UV continuity</li>
+<li>the rotation-minimizing and transport frame passes distribute the residual end-to-start twist across the loop so the final frame matches the start frame</li>
+</ol>
+<p>That last step matters for sweep meshes and equally spaced placement. Without the twist distribution pass, a closed loop can finish at the right position with the wrong orientation.</p>
+<h2>Mesh Generation</h2>
+<p>Mesh generation is CPU-first and fully deterministic.</p>
+<ul>
+<li>profile points live in the local cross-plane of the spline frame</li>
+<li><code>normal</code> and <code>binormal</code> span the sweep plane</li>
+<li><code>tangent</code> points along the path</li>
+<li>UVs are generated from profile distance and traveled curve distance</li>
+</ul>
+<p>The sweep layer currently favors reliable geometry over hyper-specialized authoring features:</p>
+<ul>
+<li>one ribbon mode</li>
+<li>one tube mode</li>
+<li>one generic custom cross-section mode</li>
+<li>optional flat end caps</li>
+</ul>
+<p>That keeps the public API small while leaving room for later additions such as hard-edge splits, per-segment UV islands, or intersection helpers.</p>
+<h2>ECS Runtime</h2>
+<p>The runtime stages are:</p>
+<ol>
+<li><code>ApplyEdits</code></li>
+<li><code>MarkDirty</code></li>
+<li><code>RebuildCaches</code></li>
+<li><code>RebuildMeshes</code></li>
+<li><code>DebugDraw</code></li>
+</ol>
+<p><code>ApplyEdits</code> owns the buffered edit surface and the helper component insertion for new spline entities.</p>
+<p><code>MarkDirty</code> captures direct component edits and changed mesh settings.</p>
+<p><code>RebuildCaches</code> updates the pure cache component and emits <code>SplineRebuilt</code>.</p>
+<p><code>RebuildMeshes</code> updates the target <code>Mesh</code> asset and emits <code>SplineMeshRebuilt</code>.</p>
+<p><code>DebugDraw</code> reads only published state (<code>SplinePath</code>, <code>SplineCache</code>, <code>SplineDebugDraw</code>) so BRP and headless logic tests do not need privileged internal access.</p>
+<!----></article> <!----><!--]--><!----> <!--[-1--><!--]--><!----></div></section><!----></div></div><!----></div> <aside class="hidden xl:block xl:w-full xl:py-8 xl:pr-4 xl:pl-4" aria-label="Table of contents and document actions"><div class="sticky top-8 flex h-full max-h-[calc(100dvh-4rem)] min-h-0 flex-col"><!--[0--><div class="min-h-0 flex-1"><div class="contents"><!--[-1--><div class="hidden text-sm tracking-normal text-foreground-muted/70 lg:block">No headings</div><!--]--></div><!----></div><!--]--> <!--[0--><!--[0--><div class="mt-auto"><div class="flex flex-col gap-1 text-sm"><!--[0--><button type="button" aria-live="polite" aria-disabled="false" class="group/option flex items-center gap-2 overflow-hidden rounded-sm px-3 py-1.5 text-left font-medium tracking-normal text-foreground-muted transition-colors duration-150 ease-out hover:bg-background-muted hover:text-foreground"><span class="grid" style="grid-template-areas: 'content';"><!----><span class="flex items-center gap-2" style="grid-area: content;"><!--[-1--><svg role="img" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-4 flex-none"><title>Markdown</title><path class="stroke-current" d="M1.212 5.5h21.576c.407 0 .712.317.712.679v11.549a.695.695 0 0 1-.712.677H1.212a.695.695 0 0 1-.712-.678V6.18c0-.362.305-.679.712-.679Z"></path><path class="fill-current" d="M3.03 15.96V7.946h2.425l2.424 2.946 2.424-2.946h2.424v8.014h-2.424v-4.596L7.88 14.31l-2.424-2.946v4.596H3.03Zm15.152 0-3.636-3.89h2.424V7.947h2.424v4.125h2.424l-3.636 3.889Z"></path></svg><!--]--> <span>Copy as Markdown</span></span><!----></span></button><!--]--> <!--[0--><a class="group/option flex items-center gap-2 rounded-sm px-3 py-1.5 text-left font-medium tracking-normal text-foreground-muted transition-colors duration-150 ease-out hover:bg-background-muted hover:text-foreground" href="https://github.com/julien-blanchon/saddle-world-spline-tools/blob/main/docs//saddle-world-spline-tools/docs/architecture.md" target="_blank" rel="noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="size-4 flex-none"><!--[-1--><!--]--><path fill-rule="evenodd" d="M16,2a14,14,0,0,0-4.43,27.28c.7.13,1-.3,1-.67s0-1.21,0-2.38c-3.89.84-4.71-1.88-4.71-1.88A3.71,3.71,0,0,0,6.24,22.3c-1.27-.86.1-.85.1-.85A2.94,2.94,0,0,1,8.48,22.9a3,3,0,0,0,4.08,1.16,2.93,2.93,0,0,1,.88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4,5.4,0,0,1,1.44-3.76,5,5,0,0,1,.14-3.7s1.17-.38,3.85,1.43a13.3,13.3,0,0,1,7,0c2.67-1.81,3.84-1.43,3.84-1.43a5,5,0,0,1,.14,3.7,5.4,5.4,0,0,1,1.44,3.76c0,5.38-3.27,6.56-6.39,6.91a3.33,3.33,0,0,1,.95,2.59c0,1.87,0,3.38,0,3.84s.25.81,1,.67A14,14,0,0,0,16,2Z"></path></svg><!----> <span>Open in GitHub</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="ml-auto size-4 flex-none"><!--[-1--><!--]--><path d="M26,28H6a2.0027,2.0027,0,0,1-2-2V6A2.0027,2.0027,0,0,1,6,4H16V6H6V26H26V16h2V26A2.0027,2.0027,0,0,1,26,28Z"></path><path d="M20 2 20 4 26.586 4 18 12.586 19.414 14 28 5.414 28 12 30 12 30 2 20 2z"></path></svg><!----> <span class="sr-only">(opens in a new tab)</span></a><!--]--> <!--[-1--><!--]--> <!--[-1--><!--]--></div></div><!--]--><!--]--></div></aside></div></main><!--]--><!--]--><!----> <!--[0--><!--[-1--><!--]--><!--]--><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_f48v3k = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/saddle-world-spline-tools"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.G3IqrOVh.js"),
+						import("../../_app/immutable/entry/app.BTePS7kX.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 5],
+							data: [null,null,{type:"data",data:{html:"\u003Cp>\u003Ccode>saddle-world-spline-tools\u003C/code> is split into four layers:\u003C/p>\n\u003Col>\n\u003Cli>pure curve authoring and evaluation\u003C/li>\n\u003Cli>frame generation and baked sampling\u003C/li>\n\u003Cli>sweep mesh generation\u003C/li>\n\u003Cli>ECS orchestration for runtime editing, cache invalidation, mesh sync, and gizmos\u003C/li>\n\u003C/ol>\n\u003Cp>That split keeps the crate useful outside ECS-heavy projects. Consumers can stay entirely in pure Rust when they only need path math, placement queries, or mesh generation for tools and offline preparation.\u003C/p>\n\u003Ch2>Data Flow\u003C/h2>\n\u003Cdiv class=\"code-block\" data-code=\"SplineCurve + SplineBakeSettings\n        |\n        v\nCurve evaluation\n  - Bezier anchor chains\n  - Catmull-Rom with selectable parameterization\n  - per-anchor roll / width / radius / scale interpolation\n        |\n        v\nBaked sampling\n  - per-segment sample tables\n  - cumulative arc-length distances\n  - frame generation from the sampled tangents\n        |\n        v\nPure queries\n  - sample_normalized\n  - sample_distance\n  - nearest_point\n  - evenly_spaced_transforms\n        |\n        v\nMesh generation\n  - ribbon / tube / custom cross-section sweep\n  - UV generation\n  - optional flat end caps\n  - normals / tangents\n        |\n        v\nECS runtime\n  - apply edit requests\n  - mark dirty segments\n  - rebuild only dirty spline caches\n  - rebuild only the affected spline meshes\n  - draw optional debug gizmos\" data-language=\"text\">\n\t\t\t\t\t\u003Cdiv class=\"shiki-theme-light\">\u003Cpre class=\"shiki github-light\" style=\"background-color:#fff;color:#24292e\" tabindex=\"0\">\u003Ccode>\u003Cspan class=\"line\">\u003Cspan>SplineCurve + SplineBakeSettings\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>Curve evaluation\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - Bezier anchor chains\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - Catmull-Rom with selectable parameterization\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - per-anchor roll / width / radius / scale interpolation\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>Baked sampling\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - per-segment sample tables\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - cumulative arc-length distances\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - frame generation from the sampled tangents\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>Pure queries\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - sample_normalized\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - sample_distance\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - nearest_point\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - evenly_spaced_transforms\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>Mesh generation\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - ribbon / tube / custom cross-section sweep\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - UV generation\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - optional flat end caps\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - normals / tangents\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>ECS runtime\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - apply edit requests\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - mark dirty segments\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - rebuild only dirty spline caches\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - rebuild only the affected spline meshes\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - draw optional debug gizmos\u003C/span>\u003C/span>\u003C/code>\u003C/pre>\u003C/div>\n\t\t\t\t\t\u003Cdiv class=\"shiki-theme-dark\">\u003Cpre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\">\u003Ccode>\u003Cspan class=\"line\">\u003Cspan>SplineCurve + SplineBakeSettings\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>Curve evaluation\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - Bezier anchor chains\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - Catmull-Rom with selectable parameterization\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - per-anchor roll / width / radius / scale interpolation\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>Baked sampling\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - per-segment sample tables\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - cumulative arc-length distances\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - frame generation from the sampled tangents\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>Pure queries\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - sample_normalized\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - sample_distance\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - nearest_point\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - evenly_spaced_transforms\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>Mesh generation\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - ribbon / tube / custom cross-section sweep\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - UV generation\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - optional flat end caps\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - normals / tangents\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        |\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>        v\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>ECS runtime\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - apply edit requests\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - mark dirty segments\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - rebuild only dirty spline caches\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - rebuild only the affected spline meshes\u003C/span>\u003C/span>\n\u003Cspan class=\"line\">\u003Cspan>  - draw optional debug gizmos\u003C/span>\u003C/span>\u003C/code>\u003C/pre>\u003C/div>\n\t\t\t\t\u003C/div>\u003Ch2>Curve Model\u003C/h2>\n\u003Cp>\u003Ccode>SplineCurve\u003C/code> stores one list of \u003Ccode>SplineControlPoint\u003C/code>s shared by both curve families.\u003C/p>\n\u003Cul>\n\u003Cli>Bezier uses the control-point anchor positions plus optional \u003Ccode>in_handle\u003C/code> and \u003Ccode>out_handle\u003C/code>.\u003C/li>\n\u003Cli>Catmull-Rom ignores the handles and uses the anchor positions only.\u003C/li>\n\u003Cli>Both families interpolate roll, width, radius, and scale metadata linearly between adjacent anchors.\u003C/li>\n\u003C/ul>\n\u003Cp>The crate intentionally treats control points as local-space authoring data. In the ECS runtime that means moving the spline entity via \u003Ccode>Transform\u003C/code> moves the whole path and every generated mesh or placement query with it.\u003C/p>\n\u003Ch2>Cache Strategy\u003C/h2>\n\u003Cp>\u003Ccode>SplineCache\u003C/code> stores two levels of baked data:\u003C/p>\n\u003Cul>\n\u003Cli>per-segment \u003Ccode>CurveEvaluation\u003C/code> sample tables\u003C/li>\n\u003Cli>one flattened \u003Ccode>SplineSample\u003C/code> array with cumulative distance and full orientation frames\u003C/li>\n\u003C/ul>\n\u003Cp>The runtime uses segment tables so message-driven point edits can invalidate only the local segments that depend on the edited anchor. After the local segment tables refresh, the flattened table is rebuilt from the current segment data and the frame pass runs again.\u003C/p>\n\u003Cp>This design gives the crate a practical incremental story without making the public API depend on an editor-only diff format.\u003C/p>\n\u003Ch3>Dirty Ranges\u003C/h3>\n\u003Cp>Dirty segment rules:\u003C/p>\n\u003Cul>\n\u003Cli>Bezier point edits affect the previous and next segment around that anchor\u003C/li>\n\u003Cli>Catmull-Rom point edits affect up to four neighboring segments because each segment depends on four anchors\u003C/li>\n\u003C/ul>\n\u003Cp>Direct mutation of the whole \u003Ccode>SplinePath\u003C/code> component is supported, but that path conservatively marks every segment dirty because a safe local diff cannot be inferred from an arbitrary external write.\u003C/p>\n\u003Ch2>Frame Generation\u003C/h2>\n\u003Cp>Framing is explicit and configurable through \u003Ccode>FrameMode\u003C/code>.\u003C/p>\n\u003Cul>\n\u003Cli>\u003Ccode>FixedUp\u003C/code> projects a caller-chosen up vector onto each tangent frame\u003C/li>\n\u003Cli>\u003Ccode>Frenet\u003C/code> derives normals from neighboring tangent deltas and is useful for debugging curvature-driven behavior\u003C/li>\n\u003Cli>\u003Ccode>ParallelTransport\u003C/code> propagates an initial frame by rotating the previous frame between successive tangents\u003C/li>\n\u003Cli>\u003Ccode>RotationMinimizing\u003C/code> uses a double-reflection transport pass and then applies twist correction on closed loops\u003C/li>\n\u003C/ul>\n\u003Cp>The default is \u003Ccode>RotationMinimizing { up_hint: Vec3::Y }\u003C/code> because roads, tubes, cables, and repeated placement usually need stable low-twist frames more than curvature-pure Frenet normals.\u003C/p>\n\u003Ch2>Closed Loops\u003C/h2>\n\u003Cp>Closed loops are handled in three places:\u003C/p>\n\u003Col>\n\u003Cli>segment indexing wraps around the control-point list\u003C/li>\n\u003Cli>the flattened cache includes an end sample that lands back on the first point, which creates a stable mesh seam and easy UV continuity\u003C/li>\n\u003Cli>the rotation-minimizing and transport frame passes distribute the residual end-to-start twist across the loop so the final frame matches the start frame\u003C/li>\n\u003C/ol>\n\u003Cp>That last step matters for sweep meshes and equally spaced placement. Without the twist distribution pass, a closed loop can finish at the right position with the wrong orientation.\u003C/p>\n\u003Ch2>Mesh Generation\u003C/h2>\n\u003Cp>Mesh generation is CPU-first and fully deterministic.\u003C/p>\n\u003Cul>\n\u003Cli>profile points live in the local cross-plane of the spline frame\u003C/li>\n\u003Cli>\u003Ccode>normal\u003C/code> and \u003Ccode>binormal\u003C/code> span the sweep plane\u003C/li>\n\u003Cli>\u003Ccode>tangent\u003C/code> points along the path\u003C/li>\n\u003Cli>UVs are generated from profile distance and traveled curve distance\u003C/li>\n\u003C/ul>\n\u003Cp>The sweep layer currently favors reliable geometry over hyper-specialized authoring features:\u003C/p>\n\u003Cul>\n\u003Cli>one ribbon mode\u003C/li>\n\u003Cli>one tube mode\u003C/li>\n\u003Cli>one generic custom cross-section mode\u003C/li>\n\u003Cli>optional flat end caps\u003C/li>\n\u003C/ul>\n\u003Cp>That keeps the public API small while leaving room for later additions such as hard-edge splits, per-segment UV islands, or intersection helpers.\u003C/p>\n\u003Ch2>ECS Runtime\u003C/h2>\n\u003Cp>The runtime stages are:\u003C/p>\n\u003Col>\n\u003Cli>\u003Ccode>ApplyEdits\u003C/code>\u003C/li>\n\u003Cli>\u003Ccode>MarkDirty\u003C/code>\u003C/li>\n\u003Cli>\u003Ccode>RebuildCaches\u003C/code>\u003C/li>\n\u003Cli>\u003Ccode>RebuildMeshes\u003C/code>\u003C/li>\n\u003Cli>\u003Ccode>DebugDraw\u003C/code>\u003C/li>\n\u003C/ol>\n\u003Cp>\u003Ccode>ApplyEdits\u003C/code> owns the buffered edit surface and the helper component insertion for new spline entities.\u003C/p>\n\u003Cp>\u003Ccode>MarkDirty\u003C/code> captures direct component edits and changed mesh settings.\u003C/p>\n\u003Cp>\u003Ccode>RebuildCaches\u003C/code> updates the pure cache component and emits \u003Ccode>SplineRebuilt\u003C/code>.\u003C/p>\n\u003Cp>\u003Ccode>RebuildMeshes\u003C/code> updates the target \u003Ccode>Mesh\u003C/code> asset and emits \u003Ccode>SplineMeshRebuilt\u003C/code>.\u003C/p>\n\u003Cp>\u003Ccode>DebugDraw\u003C/code> reads only published state (\u003Ccode>SplinePath\u003C/code>, \u003Ccode>SplineCache\u003C/code>, \u003Ccode>SplineDebugDraw\u003C/code>) so BRP and headless logic tests do not need privileged internal access.\u003C/p>\n",title:"Architecture",description:"Architecture documentation",rawMarkdown:"`saddle-world-spline-tools` is split into four layers:\n\n1. pure curve authoring and evaluation\n2. frame generation and baked sampling\n3. sweep mesh generation\n4. ECS orchestration for runtime editing, cache invalidation, mesh sync, and gizmos\n\nThat split keeps the crate useful outside ECS-heavy projects. Consumers can stay entirely in pure Rust when they only need path math, placement queries, or mesh generation for tools and offline preparation.\n\n## Data Flow\n\n```text\nSplineCurve + SplineBakeSettings\n        |\n        v\nCurve evaluation\n  - Bezier anchor chains\n  - Catmull-Rom with selectable parameterization\n  - per-anchor roll / width / radius / scale interpolation\n        |\n        v\nBaked sampling\n  - per-segment sample tables\n  - cumulative arc-length distances\n  - frame generation from the sampled tangents\n        |\n        v\nPure queries\n  - sample_normalized\n  - sample_distance\n  - nearest_point\n  - evenly_spaced_transforms\n        |\n        v\nMesh generation\n  - ribbon / tube / custom cross-section sweep\n  - UV generation\n  - optional flat end caps\n  - normals / tangents\n        |\n        v\nECS runtime\n  - apply edit requests\n  - mark dirty segments\n  - rebuild only dirty spline caches\n  - rebuild only the affected spline meshes\n  - draw optional debug gizmos\n```\n\n## Curve Model\n\n`SplineCurve` stores one list of `SplineControlPoint`s shared by both curve families.\n\n- Bezier uses the control-point anchor positions plus optional `in_handle` and `out_handle`.\n- Catmull-Rom ignores the handles and uses the anchor positions only.\n- Both families interpolate roll, width, radius, and scale metadata linearly between adjacent anchors.\n\nThe crate intentionally treats control points as local-space authoring data. In the ECS runtime that means moving the spline entity via `Transform` moves the whole path and every generated mesh or placement query with it.\n\n## Cache Strategy\n\n`SplineCache` stores two levels of baked data:\n\n- per-segment `CurveEvaluation` sample tables\n- one flattened `SplineSample` array with cumulative distance and full orientation frames\n\nThe runtime uses segment tables so message-driven point edits can invalidate only the local segments that depend on the edited anchor. After the local segment tables refresh, the flattened table is rebuilt from the current segment data and the frame pass runs again.\n\nThis design gives the crate a practical incremental story without making the public API depend on an editor-only diff format.\n\n### Dirty Ranges\n\nDirty segment rules:\n\n- Bezier point edits affect the previous and next segment around that anchor\n- Catmull-Rom point edits affect up to four neighboring segments because each segment depends on four anchors\n\nDirect mutation of the whole `SplinePath` component is supported, but that path conservatively marks every segment dirty because a safe local diff cannot be inferred from an arbitrary external write.\n\n## Frame Generation\n\nFraming is explicit and configurable through `FrameMode`.\n\n- `FixedUp` projects a caller-chosen up vector onto each tangent frame\n- `Frenet` derives normals from neighboring tangent deltas and is useful for debugging curvature-driven behavior\n- `ParallelTransport` propagates an initial frame by rotating the previous frame between successive tangents\n- `RotationMinimizing` uses a double-reflection transport pass and then applies twist correction on closed loops\n\nThe default is `RotationMinimizing { up_hint: Vec3::Y }` because roads, tubes, cables, and repeated placement usually need stable low-twist frames more than curvature-pure Frenet normals.\n\n## Closed Loops\n\nClosed loops are handled in three places:\n\n1. segment indexing wraps around the control-point list\n2. the flattened cache includes an end sample that lands back on the first point, which creates a stable mesh seam and easy UV continuity\n3. the rotation-minimizing and transport frame passes distribute the residual end-to-start twist across the loop so the final frame matches the start frame\n\nThat last step matters for sweep meshes and equally spaced placement. Without the twist distribution pass, a closed loop can finish at the right position with the wrong orientation.\n\n## Mesh Generation\n\nMesh generation is CPU-first and fully deterministic.\n\n- profile points live in the local cross-plane of the spline frame\n- `normal` and `binormal` span the sweep plane\n- `tangent` points along the path\n- UVs are generated from profile distance and traveled curve distance\n\nThe sweep layer currently favors reliable geometry over hyper-specialized authoring features:\n\n- one ribbon mode\n- one tube mode\n- one generic custom cross-section mode\n- optional flat end caps\n\nThat keeps the public API small while leaving room for later additions such as hard-edge splits, per-segment UV islands, or intersection helpers.\n\n## ECS Runtime\n\nThe runtime stages are:\n\n1. `ApplyEdits`\n2. `MarkDirty`\n3. `RebuildCaches`\n4. `RebuildMeshes`\n5. `DebugDraw`\n\n`ApplyEdits` owns the buffered edit surface and the helper component insertion for new spline entities.\n\n`MarkDirty` captures direct component edits and changed mesh settings.\n\n`RebuildCaches` updates the pure cache component and emits `SplineRebuilt`.\n\n`RebuildMeshes` updates the target `Mesh` asset and emits `SplineMeshRebuilt`.\n\n`DebugDraw` reads only published state (`SplinePath`, `SplineCache`, `SplineDebugDraw`) so BRP and headless logic tests do not need privileged internal access.\n",slug:"architecture"},uses:{params:["slug"]}}],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
