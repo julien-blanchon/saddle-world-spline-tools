@@ -30,6 +30,7 @@ Keyboard shortcuts:
 ```bash
 cargo run -p spline_tools_lab --features e2e -- smoke_launch
 cargo run -p spline_tools_lab --features e2e -- spline_tools_extrusion_smoke
+cargo run -p spline_tools_lab --features e2e -- spline_tools_closed_loop_tube
 cargo run -p spline_tools_lab --features e2e -- spline_tools_runtime_edit_smoke
 cargo run -p spline_tools_lab --features e2e -- spline_tools_placement_smoke
 ```
